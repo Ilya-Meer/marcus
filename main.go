@@ -32,7 +32,6 @@ func main() {
 	json.NewDecoder(r.Body).Decode(&quotes)
 
 	randomQuote := getRandomQuote(quotes)
-
 	formatted := formatQuote(randomQuote)
 
 	fmt.Println(formatted)
@@ -48,14 +47,14 @@ func getRandomQuote(quotes []Quote) (quote Quote) {
 func formatQuote(quote Quote) (formattedQuote string) {
 	var formatted strings.Builder
 
-	formatted.WriteString("\n\n")
+	formatted.WriteString(AddBreaks(2))
 
 	for _, str := range quote.Quote {
-		formatted.WriteString(fmt.Sprintf("     %s     ", str))
-		formatted.WriteString("\n")
+		formatted.WriteString(PadString(str, 5))
+		formatted.WriteString(AddBreaks(1))
 	}
 
-	formatted.WriteString("\n\n")
+	formatted.WriteString(AddBreaks(2))
 
 	formatted.WriteString(
 		fmt.Sprintf(
@@ -65,7 +64,7 @@ func formatQuote(quote Quote) (formattedQuote string) {
 		),
 	)
 
-	formatted.WriteString("\n\n")
+	formatted.WriteString(AddBreaks(2))
 
 	return formatted.String()
 }
