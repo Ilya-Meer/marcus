@@ -49,6 +49,10 @@ func formatQuote(quote Quote) (formattedQuote string) {
 
 	formatted.WriteString(AddBreaks(2))
 
+	formatted.WriteString(PadString("From 'Meditations' by Marcus Aurelius \n", 5))
+
+	formatted.WriteString(AddBreaks(2))
+
 	for _, str := range quote.Quote {
 		formatted.WriteString(PadString(str, 5))
 		formatted.WriteString(AddBreaks(1))
@@ -57,10 +61,13 @@ func formatQuote(quote Quote) (formattedQuote string) {
 	formatted.WriteString(AddBreaks(2))
 
 	formatted.WriteString(
-		fmt.Sprintf(
-			"     - Book %s, Section %s",
-			strconv.FormatInt(int64(quote.Book), 10),
-			strconv.FormatInt(int64(quote.Section), 10),
+		PadString(
+			fmt.Sprintf(
+				"💎 Book %s, Section %s 💎",
+				strconv.FormatInt(int64(quote.Book), 10),
+				strconv.FormatInt(int64(quote.Section), 10),
+			),
+			5,
 		),
 	)
 
