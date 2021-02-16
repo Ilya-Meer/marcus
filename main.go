@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-const quotepath = "https://gist.githubusercontent.com/Ilya-Meer/953bdc26f7feab9a419f0db8bae7de48/raw/0ff6c5b50c1fcc9633be26e1e329203b7ccdc1d1/marcus.json"
+const quotepath = "https://raw.githubusercontent.com/Ilya-Meer/marcus/main/data/quotes.json"
 
 type Quote struct {
 	Quote   []string `json:"quote"`
