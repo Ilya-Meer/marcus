@@ -2,6 +2,8 @@
 
 Get quotes from Marcus Aurelius directly in your terminal.
 
+<img src="./screenshot.png" alt="marcus aurelius quote" width="800"/>
+
 Inspired by Ben Sima's [aurelius](https://github.com/bsima/aurelius) project.
 
 ## Usage
