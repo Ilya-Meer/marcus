@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func PadString(str string, numSpaces int) (withSpaces string) {
+func (f *Formatter) PadString(str string, numSpaces int) {
 	newStr := []string{}
 
 	newStr = append(
@@ -15,9 +15,9 @@ func PadString(str string, numSpaces int) (withSpaces string) {
 		strings.Repeat(" ", numSpaces),
 	)
 
-	return fmt.Sprintf(strings.Join(newStr, ""))
+	f.WriteString(fmt.Sprintf(strings.Join(newStr, "")))
 }
 
-func AddBreaks(numBreaks int) (breaks string) {
-	return strings.Repeat("\n", numBreaks)
+func (f *Formatter) AddBreaks(numBreaks int) {
+	f.WriteString(strings.Repeat("\n", numBreaks))
 }

@@ -19,6 +19,10 @@ type Quote struct {
 	Section int      `json:"section"`
 }
 
+type Formatter struct {
+	strings.Builder
+}
+
 func main() {
 	var quotes []Quote
 
@@ -39,39 +43,33 @@ func main() {
 
 func getRandomQuote(quotes []Quote) (quote Quote) {
 	rand.Seed(time.Now().UnixNano())
-	r1 := rand.Intn(len(quotes) - 1)
+	randIndex := rand.Intn(len(quotes) - 1)
 
-	return quotes[r1]
+	return quotes[randIndex]
 }
 
 func formatQuote(quote Quote) (formattedQuote string) {
-	var formatted strings.Builder
+	var formatter Formatter
 
-	formatted.WriteString(AddBreaks(2))
-
-	formatted.WriteString(PadString("From 'Meditations' by Marcus Aurelius \n", 5))
-
-	formatted.WriteString(AddBreaks(2))
+	formatter.AddBreaks(2)
+	formatter.PadString("From 'Meditations' by Marcus Aurelius \n", 5)
+	formatter.AddBreaks(2)
 
 	for _, str := range quote.Quote {
-		formatted.WriteString(PadString(str, 5))
-		formatted.WriteString(AddBreaks(1))
+		formatter.PadString(str, 5)
+		formatter.AddBreaks(1)
 	}
 
-	formatted.WriteString(AddBreaks(2))
-
-	formatted.WriteString(
-		PadString(
-			fmt.Sprintf(
-				"💎 Book %s, Section %s 💎",
-				strconv.FormatInt(int64(quote.Book), 10),
-				strconv.FormatInt(int64(quote.Section), 10),
-			),
-			5,
+	formatter.AddBreaks(2)
+	formatter.PadString(
+		fmt.Sprintf(
+			"💎 Book %s, Section %s 💎",
+			strconv.FormatInt(int64(quote.Book), 10),
+			strconv.FormatInt(int64(quote.Section), 10),
 		),
+		5,
 	)
+	formatter.AddBreaks(2)
 
-	formatted.WriteString(AddBreaks(2))
-
-	return formatted.String()
+	return formatter.String()
 }
