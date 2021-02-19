@@ -1,10 +1,10 @@
-BINDIR    = /usr/local/bin
 EXEC      = marcus
+BINDIR    = /usr/local/bin
 BIN		  = $(BINDIR)/$(EXEC)
 
 # Install executable
 install:
-	cp $(EXEC) $(BINDIR)
+	cp bin/$(EXEC) $(BINDIR)
 	chmod 755 $(BIN)
 
 # Uninstall executable
@@ -13,4 +13,4 @@ uninstall:
 
 # Build executable
 build:
-	go build
+	go build -o bin/marcus ./src
