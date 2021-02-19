@@ -12,7 +12,6 @@ func (f *Formatter) PadString(str string, numSpaces int) {
 		newStr,
 		strings.Repeat(" ", numSpaces),
 		str,
-		strings.Repeat(" ", numSpaces),
 	)
 
 	f.WriteString(fmt.Sprintf(strings.Join(newStr, "")))

@@ -14,7 +14,7 @@ import (
 const quotepath = "https://raw.githubusercontent.com/Ilya-Meer/marcus/main/data/quotes.json"
 
 type Quote struct {
-	Quote   []string `json:"quote"`
+	Text    []string `json:"quote"`
 	Book    int      `json:"book"`
 	Section int      `json:"section"`
 }
@@ -55,7 +55,7 @@ func formatQuote(quote Quote) (formattedQuote string) {
 	formatter.PadString("From 'Meditations' by Marcus Aurelius \n", 5)
 	formatter.AddBreaks(2)
 
-	for _, str := range quote.Quote {
+	for _, str := range quote.Text {
 		formatter.PadString(str, 5)
 		formatter.AddBreaks(1)
 	}
